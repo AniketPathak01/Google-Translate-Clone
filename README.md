@@ -1,8 +1,14 @@
-# React + Vite
+# Google Translator Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple Google Translator clone built using React and Material-UI. It allows users to translate text between different languages using the MyMemory translation API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Translate text between various languages.
+- Simple and easy-to-use interface.
+
+## Technologies Used
+
+- React: A JavaScript library for building user interfaces.
+- Material-UI: React components for faster and easier web development.
+- MyMemory API: Translation API used for translating text between languages.
