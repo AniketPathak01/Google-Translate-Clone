@@ -1,6 +1,6 @@
 # Google Translator Clone
 
-This is a simple Google Translator clone built using React and Material-UI. It allows users to translate text between different languages using the MyMemory translation API.
+This is a Google Translator clone built using React and Material-UI. It allows users to translate text between different languages using the MyMemory translation API.
 
 ## Features
 
