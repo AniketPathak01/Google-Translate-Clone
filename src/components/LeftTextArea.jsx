@@ -4,7 +4,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
 
-function LeftTextArea({ enteredText, setEntredText }) {
+function LeftTextArea({ enteredText, setEntredText, clearRightTextArea }) {
   const textareaRef = useRef();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function LeftTextArea({ enteredText, setEntredText }) {
     if (textareaRef.current) {
       textareaRef.current.addEventListener("input", resizeTextarea, false);
 
-      // Clean up the event listener 
+      // Clean up the event listener
       return () => {
         textareaRef.current.removeEventListener("input", resizeTextarea, false);
       };
@@ -36,6 +36,9 @@ function LeftTextArea({ enteredText, setEntredText }) {
     if (textareaRef.current) {
       textareaRef.current.value = "";
       textareaRef.current.style.height = "auto";
+      setEntredText(""); // Clear enteredText
+      setCharCount(0); // Reset charCount
+      clearRightTextArea(); // Clear right text area
     }
   };
   return (
@@ -48,7 +51,7 @@ function LeftTextArea({ enteredText, setEntredText }) {
           minHeight: "150px",
           borderRadius: 2,
           display: "flex",
-          flexDirection: "column",
+          flexDirection: { xs:"row",sm: "row", md: "column" },
           justifyContent: "space-between",
         }}
       >

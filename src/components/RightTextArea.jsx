@@ -45,7 +45,7 @@ function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
           minHeight: "150px",
           borderRadius: 2,
           display: "flex",
-          flexDirection: { sm: "row", md: "column" },
+          flexDirection: { xs:"row",sm: "row", md: "column" },
           justifyContent: "space-between",
           backgroundColor: "#f5f5f5",
           // marginRight: "75px",
@@ -69,6 +69,7 @@ function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
             ref={textareaRef}
           ></textarea>
         </Box>
+        {fetchedOutputText && (
         <div
           style={{
             display: "flex",
@@ -96,6 +97,7 @@ function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
             </IconButton>
           </div>
         </div>
+        )}
       </Box>
     </Box>
   );

@@ -49,12 +49,16 @@ function InputBox() {
     }
   }, [debouncedEnteredText, translateFromLanguage, translateToLanguage]);
 
+  const clearRightTextArea = () => {
+    setFetchedOutputText("");
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "center",
-        flexDirection: { sm: "column", md: "row" },
+        flexDirection: { xs: "column", sm: "column", md: "row" },
         ml: 13,
         mt: 3,
       }}
@@ -70,7 +74,11 @@ function InputBox() {
             { id: "mr", label: "Marathi" },
           ]}
         />
-        <LeftTextArea enteredText={enteredText} setEntredText={setEntredText} />
+        <LeftTextArea
+          enteredText={enteredText}
+          setEntredText={setEntredText}
+          clearRightTextArea={clearRightTextArea}
+        />
       </Box>
 
       <Box sx={{ flex: 1 }}>
