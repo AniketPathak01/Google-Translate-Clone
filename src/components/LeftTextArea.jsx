@@ -51,11 +51,11 @@ function LeftTextArea({ enteredText, setEntredText, clearRightTextArea }) {
           minHeight: "150px",
           borderRadius: 2,
           display: "flex",
-          flexDirection: { xs:"row",sm: "row", md: "column" },
+          flexDirection: "column",
           justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex" }}>
+       <Box sx={{ display: "flex" }}>
           <textarea
             style={{
               border: "none",
@@ -93,17 +93,17 @@ function LeftTextArea({ enteredText, setEntredText, clearRightTextArea }) {
         >
           <IconButton>
             <MicNoneOutlinedIcon />
-            {charCount > 0 ? (
+            {charCount > 0 && (
               <IconButton>
                 <VolumeUpOutlinedIcon sx={{ ml: "15px" }} />
               </IconButton>
-            ) : (
-              ""
             )}
           </IconButton>
 
           <span> {charCount}/500 </span>
         </div>
+
+     
       </Box>
     </Box>
   );

@@ -59,7 +59,7 @@ function InputBox() {
         display: "flex",
         justifyContent: "center",
         flexDirection: { xs: "column", sm: "column", md: "row" },
-        ml: 13,
+        ml: { xs: 1, sm: 1, md: 13 },
         mt: 3,
       }}
     >

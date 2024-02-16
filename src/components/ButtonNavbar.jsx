@@ -15,7 +15,7 @@ function ButtonNavbar() {
     <Box
       sx={{
         mt: 2,
-        ml: 15,
+        ml: { xs: 1, sm: 1, md: 15 },
       }}
     >
       <Button

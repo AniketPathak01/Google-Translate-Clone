@@ -7,6 +7,7 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 
 function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
   const textareaRef = useRef();
+  const [showCopyMessage, setShowCopyMessage] = useState(false);
   const resizeTextarea = () => {
     textareaRef.current.style.height = "auto";
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
@@ -32,7 +33,10 @@ function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
   const onCopyToClipboard = useCallback(() => {
     textareaRef.current?.select();
     window.navigator.clipboard.writeText(fetchedOutputText);
-    alert("Text copied");
+    setShowCopyMessage(true);
+    setTimeout(() => {
+      setShowCopyMessage(false);
+    }, 2000); // Hides the message after 2000 milliseconds (2 seconds)
   }, [fetchedOutputText]);
 
   return (
@@ -45,60 +49,74 @@ function RightTextArea({ fetchedOutputText, setFetchedOutputText }) {
           minHeight: "150px",
           borderRadius: 2,
           display: "flex",
-          flexDirection: { xs:"row",sm: "row", md: "column" },
+          flexDirection: { xs: "column", sm: "column", md: "column" },
           justifyContent: "space-between",
           backgroundColor: "#f5f5f5",
-          // marginRight: "75px",
         }}
       >
-        <Box sx={{ display: "flex" }}>
-          <textarea
-            disabled
-            placeholder="Translation"
-            style={{
-              border: "none",
-              outline: "none",
-              marginRight: "5%",
-              padding: "10px",
-              fontSize: "20px",
-              width: "90%",
-              backgroundColor: "#f5f5f5",
-            }}
-            value={fetchedOutputText}
-            id="InputLang"
-            ref={textareaRef}
-          ></textarea>
-        </Box>
-        {fetchedOutputText && (
-        <div
+        <textarea
+          disabled
+          placeholder="Translation"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            color: "gray",
-            marginLeft: "5px",
-            marginRight: "15px",
+            border: "none",
+            outline: "none",
+            marginRight: "5%",
+            padding: "10px",
+            fontSize: "20px",
+            width: "90%",
+            backgroundColor: "#f5f5f5",
           }}
-        >
-          <div>
-            <IconButton>
-              <VolumeUpOutlinedIcon sx={{ ml: "15px" }} />
-            </IconButton>
-          </div>
-          <div>
-            <IconButton>
-              <ContentCopyIcon onClick={onCopyToClipboard} />
-            </IconButton>
-            <IconButton>
-              <ThumbsUpDownOutlinedIcon sx={{ ml: "15px" }} />
-            </IconButton>
-            <IconButton>
-              <ShareOutlinedIcon sx={{ ml: "15px" }} />
-            </IconButton>
-          </div>
-        </div>
+          value={fetchedOutputText}
+          id="InputLang"
+          ref={textareaRef}
+        ></textarea>
+        {fetchedOutputText && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "row", sm: "row", md: "row" },
+              justifyContent: "space-between",
+              alignItems: "center",
+              color: "gray",
+              marginLeft: "5px",
+              marginRight: "15px",
+            }}
+          >
+            <Box>
+              <IconButton>
+                <VolumeUpOutlinedIcon />
+              </IconButton>
+            </Box>
+            <Box>
+              <IconButton>
+                <ContentCopyIcon onClick={onCopyToClipboard} />
+              </IconButton>
+              <IconButton>
+                <ThumbsUpDownOutlinedIcon />
+              </IconButton>
+              <IconButton>
+                <ShareOutlinedIcon />
+              </IconButton>
+            </Box>
+          </Box>
         )}
       </Box>
+      {showCopyMessage && (
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "#f5f5f5",
+            width: "150px",
+            border: 1,
+            borderRadius: 5,
+            marginTop: "15px",
+            padding: "5px",
+          }}
+        >
+          Translation copied
+        </p>
+      )}
     </Box>
   );
 }
